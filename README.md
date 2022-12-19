@@ -115,6 +115,7 @@ mount
 - Changement du Disque du Raid
 - Recréer un disque de 1Go
 ```bash
+apt install parted
 partprobe
 fdisk -l
 mdadm --manage /dev/md1 --add /dev/sdc pour ajouter le disque au raid
