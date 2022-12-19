@@ -36,3 +36,23 @@ rmmod bonding
 cat /proc/net/bonding/bond0
 ip -br ad
 ```
+
+#### Répartition de charge LVS/Apache2
+- Installation des paquets
+```bash
+apt install iptables
+apt install ipvsadm
+```
+- Créer un service virtuel
+```bash
+ipvsadm -A -t 192.168.XX.XXX:80 -s rr
+ipvsadm -a -t 192.168.XX.XXX:80  -r 192.168.YY.YYY -m
+ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.ZZ.ZZZ -m
+ipvsadm -L
+```
+- Vérification
+```bash
+apt install curl
+curl 192.168.XX.XXX
+```
+#### Stockage RAID 1
