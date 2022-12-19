@@ -118,7 +118,7 @@ mount
 apt install parted
 partprobe
 fdisk -l
-mdadm --manage /dev/md1 --add /dev/sdc pour ajouter le disque au raid
+mdadm --manage /dev/md127 --add /dev/sdc pour ajouter le disque au raid
 mdadm --detail /dev/md127
 ```
 - Si cela ne fonctionne pas
