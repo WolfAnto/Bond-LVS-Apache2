@@ -7,13 +7,13 @@ Agrégation de lien, avec répartition de charge du service Apache2
 ```bash
 apt-get install ifenslave
 ```
-- Configuration du Bond0
+- Configuration du Bond0 (Adapter le nom de la carte réseau)
 ```bash
 nano /etc/modprobe.d/alias-bond.conf
 alias bond0 bonding
 options bonding mode=1 primary=eth0 fail_over_mac=1
 ```
-Configuration de la carte réseau bond0
+Configuration de la carte réseau bond0 (Adapter le nom des cartes réseau)
 ```bash
 nano /etc/network/interfaces
 auto bond0
@@ -23,6 +23,7 @@ bond-slaves eth0 eth1
 address 192.168.20.1
 netmask 255.255.255.0
 ```
+- Déchargement du module
 ```bash
 rmmod bonding
 ```
