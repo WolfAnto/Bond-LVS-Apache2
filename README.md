@@ -14,6 +14,7 @@ alias bond0 bonding
 options bonding mode=1 primary=eth0 fail_over_mac=1
 ```
 Configuration de la carte réseau bond0 (Adapter le nom des cartes réseau)
+- Désactiver au préalable les autres cartes réseau
 ```bash
 nano /etc/network/interfaces
 auto bond0
