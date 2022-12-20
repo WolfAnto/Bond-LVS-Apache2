@@ -11,7 +11,7 @@ apt-get install ifenslave
 ```bash
 nano /etc/modprobe.d/alias-bond.conf
 alias bond0 bonding
-options bonding mode=1 primary=ens33 fail_over_mac=1
+options bonding mode=1 primary=enp0s3 fail_over_mac=1
 ```
 Configuration de la carte réseau bond0 (Adapter le nom des cartes réseau)
 - Désactiver au préalable les autres cartes réseau
@@ -20,7 +20,7 @@ nano /etc/network/interfaces
 auto bond0
 iface bond0 inet dhcp
 bond-mode 1
-bond-slaves ens33 ens36
+bond-slaves enp0s3 enp0s8
 ```
 - Déchargement du module (Supprime l'ancien Bond, si il existe)
 ```bash
@@ -66,7 +66,7 @@ apt install ipvsadm
 ```
 - Mettre en place le NAT sur les paquets sortants vers internet (Adapter selon votre carte réseau)
 ```bash
-iptables -t nat -A POSTROUTING -o ens33 -j MASQUERADE
+iptables -t nat -A POSTROUTING -o bond0 -j MASQUERADE
 iptables-save > /etc/iptables/rules.v4
 ```
 - Autorisation du port 80
