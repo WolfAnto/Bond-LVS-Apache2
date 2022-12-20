@@ -69,12 +69,12 @@ apt install ipvsadm
 - Mettre en place le NAT sur les paquets sortants vers internet (Adapter selon votre carte réseau)
 ```bash
 iptables -t nat -A POSTROUTING -o ens33 -j MASQUERADE
-iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 iptables-save > /etc/iptables/rules.v4
 ```
 - Autorisation du port 80
 ```bash
 iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+iptables-save > /etc/iptables/rules.v4
 ```
 - Créer un service virtuel
 ```bash
