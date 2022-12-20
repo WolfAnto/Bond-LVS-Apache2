@@ -39,10 +39,33 @@ ip -br ad
 ```
 
 #### Répartition de charge LVS/Apache2
+- Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
+```bash
+nano /etc/network/interfaces
+auto ens38
+iface bond0 inet static
+address 192.168.56.1
+netmask 255.255.255.0
+```
+- Définir les IPs sur les machine DSL
+![image](https://user-images.githubusercontent.com/73076854/208649588-5a670e60-ac6e-46e7-bf1a-c74c293e7ea1.png)
+![image](https://user-images.githubusercontent.com/73076854/208649638-3360df0e-f5e6-4c5b-b1ee-3cab56b60661.png)
+- Lancer le service Monkey Web
+![image](https://user-images.githubusercontent.com/73076854/208650237-a144f383-0dd0-43df-b6b5-a7b1e11f17b1.png)
+
 - Installation des paquets
 ```bash
 apt install iptables
 apt install ipvsadm
+```
+- Mettre en place le NAT sur les paquets sortants vers internet (Adapter selon votre carte réseau)
+```bash
+iptables -t nat -A POSTROUTING -o ens33 -j MASQUERADE
+iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+```
+- Autorisation du port 80
+```bash
+iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 ```
 - Créer un service virtuel
 ```bash
