@@ -1,4 +1,4 @@
-# Bond-LVS-Apache2 Sous VMWare Workstation Pro
+# Bond-LVS-Web-RAID1 Sous VMWare Workstation Pro
 Agrégation de lien, avec répartition de charge du service Apache2
 
 #### Agrégation de lien
@@ -36,7 +36,7 @@ cat /proc/net/bonding/bond0
 ip -br ad
 ```
 
-#### Répartition de charge LVS/Apache2
+#### Répartition de charge LVS/Serveur Web
 - Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
 ```bash
 nano /etc/network/interfaces
