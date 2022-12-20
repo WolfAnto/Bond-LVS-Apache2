@@ -48,9 +48,12 @@ address 192.168.56.1
 netmask 255.255.255.0
 ```
 - Définir les IPs sur les machine DSL
+
 ![image](https://user-images.githubusercontent.com/73076854/208649588-5a670e60-ac6e-46e7-bf1a-c74c293e7ea1.png)
 ![image](https://user-images.githubusercontent.com/73076854/208649638-3360df0e-f5e6-4c5b-b1ee-3cab56b60661.png)
+
 - Lancer le service Monkey Web
+
 ![image](https://user-images.githubusercontent.com/73076854/208650237-a144f383-0dd0-43df-b6b5-a7b1e11f17b1.png)
 
 - Installation des paquets
