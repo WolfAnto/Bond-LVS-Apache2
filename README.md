@@ -18,11 +18,9 @@ Configuration de la carte réseau bond0 (Adapter le nom des cartes réseau)
 ```bash
 nano /etc/network/interfaces
 auto bond0
-iface bond0 inet static
+iface bond0 inet dhcp
 bond-mode 1
 bond-slaves ens33 ens36
-address 192.168.20.1
-netmask 255.255.255.0
 ```
 - Déchargement du module (Supprime l'ancien Bond, si il existe)
 ```bash
