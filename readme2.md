@@ -41,8 +41,8 @@ ip -br ad
 - Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
 ```bash
 nano /etc/network/interfaces
-auto ens37
-iface ens37 inet static
+auto enp0s9
+iface enp0s9 inet static
 address 192.168.56.1
 netmask 255.255.255.0
 ```
