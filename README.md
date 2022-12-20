@@ -83,6 +83,11 @@ ipvsadm -a -t 192.168.XX.XXX:80  -r 192.168.YY.YYY -m
 ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.ZZ.ZZZ -m
 ipvsadm -L
 ```
+- Activation du routage
+```bash
+nano /etc/sysctl.conf
+net.ipv4.ip_forward=1
+```
 - Vérification
 ```bash
 apt install curl
