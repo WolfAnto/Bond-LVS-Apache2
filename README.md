@@ -11,7 +11,7 @@ apt-get install ifenslave
 ```bash
 nano /etc/modprobe.d/alias-bond.conf
 alias bond0 bonding
-options bonding mode=1 primary=eth0 fail_over_mac=1
+options bonding mode=1 primary=ens33 fail_over_mac=1
 ```
 Configuration de la carte réseau bond0 (Adapter le nom des cartes réseau)
 - Désactiver au préalable les autres cartes réseau
@@ -20,7 +20,7 @@ nano /etc/network/interfaces
 auto bond0
 iface bond0 inet static
 bond-mode 1
-bond-slaves eth0 eth1
+bond-slaves ens33 ens36
 address 192.168.20.1
 netmask 255.255.255.0
 ```
@@ -96,8 +96,10 @@ ipvsadm -L
 ```bash
 apt install curl
 curl 192.168.XX.XXX
+ou
+http://192.168.XX.XXX
 ```
-#### Stockage RAID 1
+#### Stockage RAID 1 (NE FONCTIONNE PAS SOUS VMWARE)
 - Installation des paquets
 ```bash
 apt update
