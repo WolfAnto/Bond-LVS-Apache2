@@ -24,7 +24,7 @@ bond-slaves eth0 eth1
 address 192.168.20.1
 netmask 255.255.255.0
 ```
-- Déchargement du module
+- Déchargement du module (Supprime l'ancien Bond, si il existe)
 ```bash
 rmmod bonding
 ```
