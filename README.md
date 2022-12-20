@@ -36,6 +36,9 @@ cat /proc/net/bonding/bond0
 ip -br ad
 ```
 
+![image](https://user-images.githubusercontent.com/73076854/208654898-56884b7f-ccf9-4194-b065-5c00422ac0a4.png)
+
+
 #### Répartition de charge LVS/Apache2
 - Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
 ```bash
