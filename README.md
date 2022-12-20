@@ -76,17 +76,21 @@ iptables-save > /etc/iptables/rules.v4
 iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 iptables-save > /etc/iptables/rules.v4
 ```
+- Activation du routage
+```bash
+nano /etc/sysctl.conf
+net.ipv4.ip_forward=1
+```
+-Rédémarrer votre machine pour appliquer le routage
+```bash
+reboot
+```
 - Créer un service virtuel
 ```bash
 ipvsadm -A -t 192.168.XX.XXX:80 -s rr
 ipvsadm -a -t 192.168.XX.XXX:80  -r 192.168.YY.YYY -m
 ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.ZZ.ZZZ -m
 ipvsadm -L
-```
-- Activation du routage
-```bash
-nano /etc/sysctl.conf
-net.ipv4.ip_forward=1
 ```
 - Vérification
 ```bash
