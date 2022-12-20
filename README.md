@@ -47,6 +47,10 @@ iface ens37 inet static
 address 192.168.56.1
 netmask 255.255.255.0
 ```
+- Rédémarrage du service
+```bash
+/etc/init.d/networking restart
+```
 - Définir les IPs sur les machine DSL
 
 ![image](https://user-images.githubusercontent.com/73076854/208649588-5a670e60-ac6e-46e7-bf1a-c74c293e7ea1.png)
