@@ -37,7 +37,7 @@ cat /proc/net/bonding/bond0
 ip -br ad
 ```
 
-#### Répartition de charge LVS/Apache2
+#### Répartition de charge LVS/Serveur Web
 - Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
 ```bash
 nano /etc/network/interfaces
@@ -102,6 +102,7 @@ http://192.168.XX.XXX
 ![image](https://user-images.githubusercontent.com/73076854/208654898-56884b7f-ccf9-4194-b065-5c00422ac0a4.png)
 
 #### Stockage RAID 1 (NE FONCTIONNE PAS SOUS VMWARE)
+#### NE SURTOUT PAS REBOOT LA MACHINE PENDANT LA MANIPULATION
 - Installation des paquets
 ```bash
 apt update
