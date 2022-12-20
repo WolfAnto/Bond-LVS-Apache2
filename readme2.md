@@ -26,9 +26,10 @@ bond-slaves enp0s3 enp0s8
 ```bash
 rmmod bonding
 ```
-- Rédémarrage du service
+- Rédémarrage du service, puis rédemarrage machine
 ```bash
 /etc/init.d/networking restart
+reboot
 ```
 - Vérification
 ```bash
