@@ -1,4 +1,4 @@
-# Bond-LVS-Apache2
+# Bond-LVS-Apache2 Sous VMWare Workstation Pro
 Agrégation de lien, avec répartition de charge du service Apache2
 
 #### Agrégation de lien
