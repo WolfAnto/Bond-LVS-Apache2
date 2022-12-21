@@ -109,6 +109,11 @@ http://192.168.XX.XXX
 
 #### Stockage RAID 1 (NE FONCTIONNE PAS SOUS VMWARE)
 #### NE SURTOUT PAS REBOOT LA MACHINE PENDANT LA MANIPULATION
+
+-Il est nécéssaire que vos disques soit branchable à chaud
+
+![image](https://user-images.githubusercontent.com/73076854/208864749-dc000b05-e5ea-4ba5-ab88-fb54c326eaa1.png)
+
 - Installation des paquets
 ```bash
 apt update
