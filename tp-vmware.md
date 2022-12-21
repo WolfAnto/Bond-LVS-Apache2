@@ -2,7 +2,7 @@
 Agrégation de lien, avec répartition de charge du service Monkey Web
 
 - Prérequis :
-- 3 cartes réseau (Bridge, Bridge, Lan Segment)
+- 3 cartes réseau (NAT, NAT, Lan Segment)
 - 3 Disques (20Go, 1Go, 1Go)
 - Un peu de neurones
 - 2 machines DSL
