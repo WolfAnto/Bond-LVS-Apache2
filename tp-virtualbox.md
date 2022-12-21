@@ -51,6 +51,7 @@ auto enp0s9
 iface enp0s9 inet static
 address 192.168.56.1
 netmask 255.255.255.0
+'Cette IP est la passerelle pour les machines DSL'
 ```
 - Rédémarrage du service
 ```bash
@@ -92,6 +93,7 @@ reboot
 ```
 - Créer un service virtuel
 ```bash
+'XX = Machine Hote, YY/ZZ = Machines DSL'
 ipvsadm -A -t 192.168.XX.XXX:80 -s rr
 ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.YY.YYY -m
 ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.ZZ.ZZZ -m
