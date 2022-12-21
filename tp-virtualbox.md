@@ -1,5 +1,10 @@
-# Bond-LVS-Apache2 Sous VirtualBox
+# Bond-LVS-Web-RAID1 Sous VirtualBox
 Agrégation de lien, avec répartition de charge du service Apache2
+
+- Prérequis :
+- 3 cartes réseau (Bridge, Bridge, Lan Segment)
+- 3 Disques (20Go, 1Go, 1Go)
+- Un peu de neurones
 
 #### Agrégation de lien
 
