@@ -93,7 +93,7 @@ reboot
 - Créer un service virtuel
 ```bash
 ipvsadm -A -t 192.168.XX.XXX:80 -s rr
-ipvsadm -a -t 192.168.XX.XXX:80  -r 192.168.YY.YYY -m
+ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.YY.YYY -m
 ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.ZZ.ZZZ -m
 ipvsadm -L
 ```
@@ -171,7 +171,7 @@ mount
 apt install parted
 partprobe
 fdisk -l
-mdadm --manage /dev/md127 --add /dev/sdc pour ajouter le disque au raid
+mdadm --manage /dev/md127 --add /dev/sdc
 mdadm --detail /dev/md127
 ```
 - Si cela ne fonctionne pas
