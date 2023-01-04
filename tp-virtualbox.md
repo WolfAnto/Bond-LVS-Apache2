@@ -62,7 +62,7 @@ nano /etc/keepalived/keepalived.conf
  }
  virtual_ipaddress {
  192.168.2.100/21 dev bond0
- 192.168.56.1/24 dev enp0s9
+'Cette IP doit avoir le meme format+CIDR que bond0'
  }
 }
 
@@ -77,7 +77,8 @@ nano /etc/keepalived/keepalived.conf
  auth_pass 12345
  }
  virtual_ipaddress {
- 192.168.56.1/24 dev enp0s9
+ 192.168.56.100/24 dev enp0s9
+'Cette IP doit avoir le meme format+CIDR que enp0s9'
  }
 }
 ```
@@ -102,6 +103,7 @@ nano /etc/keepalived/keepalived.conf
  }
  virtual_ipaddress {
  192.168.2.100/24 dev bond0
+ 'Cette IP doit avoir le meme format+CIDR que bond0'
  }
 }
 
@@ -116,7 +118,8 @@ nano /etc/keepalived/keepalived.conf
  auth_pass 12345
  }
  virtual_ipaddress {
- 192.168.56.1/24 dev enp0s9
+ 192.168.56.100/24 dev enp0s9
+ 'Cette IP doit avoir le meme format+CIDR que enp0s9'
  }
 }
 ```
