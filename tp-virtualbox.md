@@ -142,6 +142,16 @@ address 192.168.56.1
 netmask 255.255.255.0
 'Cette IP est la passerelle pour les machines DSL'
 ```
+- Sur la deuxieme machine
+- Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
+```bash
+nano /etc/network/interfaces
+auto enp0s9
+iface enp0s9 inet static
+address 192.168.56.2
+netmask 255.255.255.0
+'Cette IP est la passerelle pour les machines DSL'
+```
 - Rédémarrage du service
 ```bash
 /etc/init.d/networking restart
