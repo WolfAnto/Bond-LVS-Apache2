@@ -1,11 +1,21 @@
-# Bond-LVS-Web-RAID1 Sous VirtualBox
+# Bond-LVS-Fail_Over_Service-Web-RAID1 Sous VirtualBox
 Agrégation de lien, avec répartition de charge du service Monkey Web
 
 - Prérequis :
+
+- LB1 :
 - 3 cartes réseau (Bridge, Bridge, Lan Segment)
 - 3 Disques (20Go, 1Go, 1Go)
 - Un peu de neurones
-- 2 machines DSL
+
+- lB2 :
+- 3 cartes réseau (Bridge, Bridge, Lan Segment)
+- 3 Disques (20Go, 1Go, 1Go)
+- Un peu de neurones
+
+- 1 machines DSL
+
+# TOUTES LES MANIPULATIONS SONT A FAIRE EN DOUBLE SUR LB1 & LB2
 
 #### Agrégation de lien
 
@@ -88,6 +98,7 @@ systemctl restart keepalived
 systemctl enable keepalived
 ```
 - Cloner la VM en LB2, modifier priority 254
+- Ceci est la configuration pour LB2 :
 ```bash
 nano /etc/keepalived/keepalived.conf
 
@@ -131,6 +142,7 @@ systemctl enable keepalived
 -Vérifier le basculement ( adresse ip de bond0 ) en cas de coupure de bond0 sur LB1, puis LB2
 ```bash
 ip a show dev bond0
+ip a show dev enp0s9
 ```
 #### Répartition de charge LVS/Serveur Web
 - Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
@@ -140,7 +152,6 @@ auto enp0s9
 iface enp0s9 inet static
 address 192.168.56.1
 netmask 255.255.255.0
-'Cette IP est la passerelle pour les machines DSL'
 ```
 - Sur la deuxieme machine
 - Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
@@ -150,7 +161,6 @@ auto enp0s9
 iface enp0s9 inet static
 address 192.168.56.2
 netmask 255.255.255.0
-'Cette IP est la passerelle pour les machines DSL'
 ```
 - Rédémarrage du service
 ```bash
@@ -159,7 +169,6 @@ netmask 255.255.255.0
 - Définir les IPs sur les machine DSL
 
 ![image](https://user-images.githubusercontent.com/73076854/208649588-5a670e60-ac6e-46e7-bf1a-c74c293e7ea1.png)
-![image](https://user-images.githubusercontent.com/73076854/208649638-3360df0e-f5e6-4c5b-b1ee-3cab56b60661.png)
 
 - Lancer le service Monkey Web
 
@@ -192,10 +201,9 @@ reboot
 ```
 - Créer un service virtuel
 ```bash
-'XX = Machine Hote, YY/ZZ = Machines DSL'
+'XX = Machine Hote IP Virtuel, YY = Machines DSL'
 ipvsadm -A -t 192.168.XX.XXX:80 -s rr
 ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.YY.YYY -m
-ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.ZZ.ZZZ -m
 ipvsadm -L
 ```
 - Vérification
