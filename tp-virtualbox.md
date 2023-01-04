@@ -65,10 +65,26 @@ nano /etc/keepalived/keepalived.conf
  192.168.56.1/24 dev enp0s9
  }
 }
+
+ vrrp_instance VI_2 {
+ state MASTER
+ interface enp0s9
+ virtual_router_id 51
+ priority 255
+ advert_int 1
+ authentication {
+ auth_type PASS
+ auth_pass 12345
+ }
+ virtual_ipaddress {
+ 192.168.56.1/24 dev enp0s9
+ }
+}
 ```
 - Redémarrer le service keepalived
 ```bash
 systemctl restart keepalived
+systemctl enable keepalived
 ```
 - Cloner la VM en LB2, modifier priority 254
 ```bash
@@ -86,6 +102,20 @@ nano /etc/keepalived/keepalived.conf
  }
  virtual_ipaddress {
  192.168.2.100/24 dev bond0
+ }
+}
+
+ vrrp_instance VI_2 {
+ state MASTER
+ interface enp0s9
+ virtual_router_id 51
+ priority 254
+ advert_int 1
+ authentication {
+ auth_type PASS
+ auth_pass 12345
+ }
+ virtual_ipaddress {
  192.168.56.1/24 dev enp0s9
  }
 }
@@ -93,6 +123,7 @@ nano /etc/keepalived/keepalived.conf
 - Redémarrer le service keepalived
 ```bash
 systemctl restart keepalived
+systemctl enable keepalived
 ```
 -Vérifier le basculement ( adresse ip de bond0 ) en cas de coupure de bond0 sur LB1, puis LB2
 ```bash
