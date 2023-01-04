@@ -42,7 +42,62 @@ reboot
 cat /proc/net/bonding/bond0
 ip -br ad
 ```
+#### Mise en place FAIL OVER SERVICE
+```bash
+apt install keepalived
+```
+- modifier la configuration
+```bash
+nano /etc/keepalived/keepalived.conf
 
+ vrrp_instance VI_1 {
+ state MASTER
+ interface eth0
+ virtual_router_id 51
+ priority 255
+ advert_int 1
+ authentication {
+ auth_type PASS
+ auth_pass 12345
+ }
+ virtual_ipaddress {
+ 192.168.2.100/21 dev bond0
+ 192.168.56.1/24 dev enp0s9
+ }
+}
+```
+- Redémarrer le service keepalived
+```bash
+systemctl restart keepalived
+```
+- Cloner la VM en LB2, modifier priority 254
+```bash
+nano /etc/keepalived/keepalived.conf
+
+ vrrp_instance VI_1 {
+ state MASTER
+ interface eth0
+ virtual_router_id 51
+ priority 254
+ advert_int 1
+ authentication {
+ auth_type PASS
+ auth_pass 12345
+ }
+ virtual_ipaddress {
+ 192.168.2.100/21 dev bond0
+ 192.168.56.1/24 dev enp0s9
+ }
+}
+```
+- Redémarrer le service keepalived
+```bash
+systemctl restart keepalived
+```
+-Vérifier le basculement ( adresse ip de bond0 ) en cas de coupure de bond0 sur LB1, puis LB2
+```bash
+ip a
+```
 #### Répartition de charge LVS/Serveur Web
 - Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
 ```bash
