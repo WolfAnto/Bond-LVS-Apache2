@@ -15,6 +15,10 @@ Agrégation de lien, avec répartition de charge du service Monkey Web
 
 - 1 machines DSL
 
+# Schéma :
+![Untitled](https://user-images.githubusercontent.com/73076854/210636887-a64912a7-2a5e-4c95-8e87-edee4746c98a.png)
+
+
 # TOUTES LES MANIPULATIONS SONT A FAIRE EN DOUBLE SUR LB1 & LB2
 
 #### Agrégation de lien
