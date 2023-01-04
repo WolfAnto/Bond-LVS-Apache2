@@ -69,7 +69,7 @@ nano /etc/keepalived/keepalived.conf
  vrrp_instance VI_2 {
  state MASTER
  interface enp0s9
- virtual_router_id 51
+ virtual_router_id 52
  priority 255
  advert_int 1
  authentication {
@@ -110,7 +110,7 @@ nano /etc/keepalived/keepalived.conf
  vrrp_instance VI_2 {
  state MASTER
  interface enp0s9
- virtual_router_id 51
+ virtual_router_id 52
  priority 254
  advert_int 1
  authentication {
