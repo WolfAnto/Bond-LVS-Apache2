@@ -168,7 +168,7 @@ netmask 255.255.255.0
 ```
 - Définir les IPs sur les machine DSL
 
-![image](https://user-images.githubusercontent.com/73076854/208649588-5a670e60-ac6e-46e7-bf1a-c74c293e7ea1.png)
+![image](https://user-images.githubusercontent.com/73076854/210634058-9aa6bf9e-1ebc-499a-bcc3-ee00ff2046ea.png)
 
 - Lancer le service Monkey Web
 
