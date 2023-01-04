@@ -52,7 +52,7 @@ nano /etc/keepalived/keepalived.conf
 
  vrrp_instance VI_1 {
  state MASTER
- interface eth0
+ interface bond0
  virtual_router_id 51
  priority 255
  advert_int 1
@@ -76,7 +76,7 @@ nano /etc/keepalived/keepalived.conf
 
  vrrp_instance VI_1 {
  state MASTER
- interface eth0
+ interface bond0
  virtual_router_id 51
  priority 254
  advert_int 1
@@ -85,7 +85,7 @@ nano /etc/keepalived/keepalived.conf
  auth_pass 12345
  }
  virtual_ipaddress {
- 192.168.2.100/21 dev bond0
+ 192.168.2.100/24 dev bond0
  192.168.56.1/24 dev enp0s9
  }
 }
@@ -96,7 +96,7 @@ systemctl restart keepalived
 ```
 -Vérifier le basculement ( adresse ip de bond0 ) en cas de coupure de bond0 sur LB1, puis LB2
 ```bash
-ip a
+ip a show dev bond0
 ```
 #### Répartition de charge LVS/Serveur Web
 - Ajouter une troisieme carte réseau (en LAN Segment) (Adapter le nom de la carte réseau)
