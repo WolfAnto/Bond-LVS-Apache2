@@ -210,6 +210,13 @@ ipvsadm -A -t 192.168.XX.XXX:80 -s rr
 ipvsadm -a -t 192.168.XX.XXX:80 -r 192.168.YY.YYY -m
 ipvsadm -L
 ```
+- Exemple
+```bash
+'192.168.7.XX étant une plage d'IP statique pour le réseau RT'
+ipvsadm -A -t 192.168.7.100:80 -s rr
+ipvsadm -a -t 192.168.7.100:80 -r 192.168.56.10 -m
+ipvsadm -L
+```
 - Vérification
 ```bash
 apt install curl
